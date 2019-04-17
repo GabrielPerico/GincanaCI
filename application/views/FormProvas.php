@@ -10,6 +10,8 @@
 
 <body>
     <h1>Cadastrar Prova</h1>
+    <br>
+    <?= (isset($prova))? '' : '<a href="'.$this->config->base_url().'index.php'.'">Voltar as ações</a><br><br> ' ?>
     <form action="" method="post">
         <label for="nome">Nome:</label>
         <br>

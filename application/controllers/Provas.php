@@ -6,7 +6,8 @@ class Provas extends CI_Controller
 
     public function index()
     {
-        $this->listar();
+        $this->load->view('index');
+        
     }
 
     public function listar()
