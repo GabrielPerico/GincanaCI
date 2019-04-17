@@ -12,16 +12,21 @@
     <h1>Cadastrar Prova</h1>
     <form action="" method="post">
         <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome" value="">
         <br>
+        <input type="text" name="nome" id="nome" value="<?= (isset($prova)) ? $prova->nome : '' ?>">
+        <br><br>
         <label for="tempo">Tempo de duração:</label>
-        <input type="text" name="tempo" id="tempo">
         <br>
+        <input type="text" name="tempo" id="tempo" value="<?= (isset($prova)) ? $prova->tempo : '' ?>">
+        <br><br>
         <label for="descricao">Descrição da prova:</label>
-        <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
         <br>
+        <textarea name="descricao" id="descricao" cols="30" rows="10"><?= (isset($prova)) ? $prova->descricao : '' ?></textarea>
+        <br><br>
         <label for="NIntegrantes">Número de integrantes</label>
-        <input type="text" name="NIntegrantes" id="NIntegrantes">
+        <br>
+        <input type="text" name="NIntegrantes" id="NIntegrantes" value="<?= (isset($prova)) ? $prova->NIntegrantes : '' ?>">
+        <hr>
         <button type="submit">Enviar</button>
         <button type="reset">Limpar</button>
     </form>

@@ -36,8 +36,10 @@ class Provas extends CI_Controller
             );
 
             if ($this->Provas_model->insert($data)) {
+                $this->session->set_flashdata('mensagem', 'Prova cadastrada');
                 redirect('Provas/listar');
             } else {
+                $this->session->set_flashdata('mensagem', 'Falha ao cadastrar prova');
                 redirect('Provas/cadastrar');
             }
         }
@@ -55,9 +57,37 @@ class Provas extends CI_Controller
 
             if ($this->form_validation->run() == FALSE) {
                 $data['prova'] = $this->Provas_model->getOne($id);
+                $this->load->view('FormProvas', $data);
             } else {
-                # code...;
+                $data = array(
+                    'nome' => $this->input->post('nome'),
+                    'tempo' => $this->input->post('tempo'),
+                    'descricao' => $this->input->post('descricao'),
+                    'NIntegrantes' => $this->input->post('NIntegrantes')
+                );
+                if ($this->Provas_model->update($id, $data)) {
+                    $this->session->set_flashdata('mensagem', 'Prova alterada');
+                    redirect('Provas/listar');
+                } else {
+                    $this->session->set_flashdata('mensagem', 'Falha ao alterar prova');
+                    redirect('Provas/alterar/' . $id);
+                }
             }
+        } else {
+            redirect('Provas/listar');
         }
     }
+
+    public function deletar($id)
+    {
+        if($id > 0){
+            $this->load->model('Provas_model');
+            if($this->Provas_model->delete($id)){
+                $this->session->set_flashdata('mensagem', 'Prova deletada');
+            }else{
+                $this->session->set_flashdata('mensagem', 'Falha ao deletar prova');
+            }
+        }
+        redirect('Provas/listar');
+     }
 }

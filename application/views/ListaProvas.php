@@ -29,7 +29,9 @@
                 echo '<td><textarea cols="30" rows="5">'.$p->descricao.'</textarea></td>';
                 echo '<td>'.$p->NIntegrantes.'</td>';
                 echo '<td>'
-                    . '';
+                    . '<a href="'. $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id .'">Alterar</a>'
+                    . ' | '
+                    . '<a href="'. $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id .'">Deletar</a>';
                 echo '</td>';
                 echo '</tr>';
             }
