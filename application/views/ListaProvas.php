@@ -17,28 +17,27 @@
                 <a class="btn btn-info mt-2 mb-3" href="<?= $this->config->base_url() . '/index.php' ?>">Voltar as ações</a>
             </div>
         </div>
-        <table border="1">
-            <thead>
+        <table class="table table-hover text-center">
+            <thead class="thead-dark">
                 <tr>
-                    <th>Nome</th>
-                    <th>Tempo</th>
-                    <th>Descrição</th>
-                    <th>Número de integrantes</th>
-                    <th>Ações</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tempo</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Número de integrantes</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($provas as $p) {
                     echo '<tr>';
-                    echo '<td>' . $p->nome . '</td>';
-                    echo '<td>' . $p->tempo . '</td>';
-                    echo '<td><textarea cols="30" rows="5">' . $p->descricao . '</textarea></td>';
-                    echo '<td>' . $p->NIntegrantes . '</td>';
-                    echo '<td>'
-                        . '<a href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
-                        . ' | '
-                        . '<a href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
+                    echo '<td class="align-middle">' . $p->nome . '</td>';
+                    echo '<td class="align-middle">' . $p->tempo . '</td>';
+                    echo '<td class="align-middle"><textarea class="md-textarea form-control" disabled cols="30" rows="5">' . $p->descricao . '</textarea></td>';
+                    echo '<td class="align-middle">' . $p->NIntegrantes . '</td>';
+                    echo '<td class="align-middle">'
+                        . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
+                        . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
                     echo '</td>';
                     echo '</tr>';
                 }
