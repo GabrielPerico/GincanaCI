@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
+    <style>
+        .table-cells {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 40px;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,36 +41,40 @@
             </div>
         </div>
         <div class="row mb-5">
-            <table class="table table-hover text-center">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Tempo</th>
-                        <th scope="col">Descrição</th>
-                        <th scope="col">Número de integrantes</th>
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($provas as $p) {
-                        echo '<tr>';
-                        echo '<td class="align-middle">' . $p->nome . '</td>';
-                        echo '<td class="align-middle">' . $p->tempo . '</td>';
-                        echo '<td class="align-middle"><textarea class="md-textarea form-control" disabled cols="30" rows="5">' . $p->descricao . '</textarea></td>';
-                        echo '<td class="align-middle">' . $p->NIntegrantes . '</td>';
-                        echo '<td class="align-middle">'
-                            . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
-                            . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
-                        echo '</td>';
-                        echo '</tr>';
-                    }
-    
-                    ?>
-                </tbody>
-            </table>
+            <div class="col-12">
+
+
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" width="20%">Nome</th>
+                            <th scope="col" width="10%">Tempo</th>
+                            <th scope="col" width="40%">Descrição</th>
+                            <th scope="col" width="10%">Número de integrantes</th>
+                            <th scope="col" width="20%">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($provas as $p) {
+                            echo '<tr>';
+                            echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
+                            echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
+                            echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
+                            echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
+                            echo '<td class="align-middle table-cells" width="20%">'
+                                . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
+                                . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+
+                        ?>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
-    </div>
 </body>
 
 </html>
