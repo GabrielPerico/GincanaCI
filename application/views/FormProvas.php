@@ -10,14 +10,29 @@
 </head>
 
 <body>
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <h1 class="navbar-brand">Gincana de algum lugar</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?= $this->config->base_url().'/index.php/provas/cadastrar' ?>">Cadastrar <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $this->config->base_url().'/index.php/provas/listar' ?>">Lista</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5 pt-4">
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class=" mb-3">Cadastrar Prova</h1>
-                <?= (isset($prova)) ? '' : '<a class="btn btn-info mb-1" href="' . $this->config->base_url() . 'index.php' . '">Voltar as ações</a><br><br> ' ?>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-4 offset-4 text-center">
                 <div class="card">
                     <form action="" method="post">
