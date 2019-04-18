@@ -37,10 +37,8 @@ class Provas extends CI_Controller
             );
 
             if ($this->Provas_model->insert($data)) {
-                $this->session->set_flashdata('mensagem', 'Prova cadastrada');
                 redirect('Provas/listar');
             } else {
-                $this->session->set_flashdata('mensagem', 'Falha ao cadastrar prova');
                 redirect('Provas/cadastrar');
             }
         }
@@ -67,10 +65,8 @@ class Provas extends CI_Controller
                     'NIntegrantes' => $this->input->post('NIntegrantes')
                 );
                 if ($this->Provas_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', 'Prova alterada');
                     redirect('Provas/listar');
                 } else {
-                    $this->session->set_flashdata('mensagem', 'Falha ao alterar prova');
                     redirect('Provas/alterar/' . $id);
                 }
             }
@@ -83,11 +79,7 @@ class Provas extends CI_Controller
     {
         if($id > 0){
             $this->load->model('Provas_model');
-            if($this->Provas_model->delete($id)){
-                $this->session->set_flashdata('mensagem', 'Prova deletada');
-            }else{
-                $this->session->set_flashdata('mensagem', 'Falha ao deletar prova');
-            }
+            $this->Provas_model->delete($id);
         }
         redirect('Provas/listar');
      }

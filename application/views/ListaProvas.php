@@ -57,16 +57,16 @@
                     <tbody>
                         <?php
                         foreach ($provas as $p) {
-                            echo '<tr>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
-                            echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
-                            echo '<td class="align-middle table-cells" width="20%">'
-                                . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
-                                . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
-                            echo '</td>';
-                            echo '</tr>';
+                                echo '<tr>';
+                                echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
+                                echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
+                                echo '<td class="align-middle table-cells" width="20%">'
+                                    . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
+                                    . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
+                                echo '</td>';
+                                echo '</tr>';
                         }
 
                         ?>
