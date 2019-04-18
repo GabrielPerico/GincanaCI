@@ -13,8 +13,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1>Cadastrar Prova</h1>
-                <?= (isset($prova)) ? '' : '<a href="' . $this->config->base_url() . 'index.php' . '">Voltar as ações</a><br><br> ' ?>
+                <h1 class=" mb-3">Cadastrar Prova</h1>
+                <?= (isset($prova)) ? '' : '<a class="btn btn-info mb-1" href="' . $this->config->base_url() . 'index.php' . '">Voltar as ações</a><br><br> ' ?>
             </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success pl-3 pr-3 mr-3" type="submit">Enviar</button>
-                            <?= (isset($prova)) ? '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/provas/listar">Cancelar</a>' : '<button type="reset">Limpar</button>' ?>
+                            <?= (isset($prova)) ? '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/provas/listar">Cancelar</a>' : '<button class="btn btn-danger" type="reset">Limpar</button>' ?>
                         </div>
                     </form>
                 </div>
