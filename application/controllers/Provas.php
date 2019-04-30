@@ -10,6 +10,14 @@ class Provas extends CI_Controller
         
     }
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Usuario_model');
+        $this->Usuario_model->verificaLogin();
+        
+    }
+
     public function listar()
     {
         $this->load->model('Provas_model');

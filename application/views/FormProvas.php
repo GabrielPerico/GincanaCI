@@ -24,6 +24,13 @@
                     <a class="nav-link" href="<?= $this->config->base_url().'/index.php/provas/listar' ?>">Lista</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $this->config->base_url() . 'Usuario/sair'; ?>">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container mt-5 pt-4">

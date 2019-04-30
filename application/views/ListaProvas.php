@@ -32,6 +32,13 @@
                     <a class="nav-link" href="<?= $this->config->base_url() . '/index.php/provas/listar' ?>">Lista</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $this->config->base_url() . 'Usuario/sair'; ?>">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container mt-5 pt-4">
@@ -57,16 +64,16 @@
                     <tbody>
                         <?php
                         foreach ($provas as $p) {
-                                echo '<tr>';
-                                echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
-                                echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
-                                echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
-                                echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
-                                echo '<td class="align-middle table-cells" width="20%">'
-                                    . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
-                                    . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
-                                echo '</td>';
-                                echo '</tr>';
+                            echo '<tr>';
+                            echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
+                            echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
+                            echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
+                            echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
+                            echo '<td class="align-middle table-cells" width="20%">'
+                                . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'index.php/Provas/alterar/' . $p->id . '">Alterar</a>'
+                                . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'index.php/Provas/deletar/' . $p->id . '">Deletar</a>';
+                            echo '</td>';
+                            echo '</tr>';
                         }
 
                         ?>
