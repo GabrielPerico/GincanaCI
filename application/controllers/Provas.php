@@ -7,7 +7,6 @@ class Provas extends CI_Controller
     public function index()
     {
         $this->listar();
-        
     }
 
     public function __construct()
@@ -15,14 +14,15 @@ class Provas extends CI_Controller
         parent::__construct();
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
-        
     }
 
     public function listar()
     {
         $this->load->model('Provas_model');
         $data['provas'] = $this->Provas_model->getAll();
+        $this->load->view('Header');
         $this->load->view('ListaProvas', $data);
+        $this->load->view('Footer');
     }
 
     public function cadastrar()
@@ -33,7 +33,9 @@ class Provas extends CI_Controller
         $this->form_validation->set_rules('NIntegrantes', 'NIntegrantes', 'required');
 
         if ($this->form_validation->run() == FALSE) {
+            $this->load->view('Header');
             $this->load->view('FormProvas');
+            $this->load->view('Footer');
         } else {
             $this->load->model('Provas_model');
 
@@ -64,7 +66,9 @@ class Provas extends CI_Controller
 
             if ($this->form_validation->run() == FALSE) {
                 $data['prova'] = $this->Provas_model->getOne($id);
+                $this->load->view('Header');
                 $this->load->view('FormProvas', $data);
+                $this->load->view('Footer');
             } else {
                 $data = array(
                     'nome' => $this->input->post('nome'),
@@ -85,10 +89,10 @@ class Provas extends CI_Controller
 
     public function deletar($id)
     {
-        if($id > 0){
+        if ($id > 0) {
             $this->load->model('Provas_model');
             $this->Provas_model->delete($id);
         }
         redirect('Provas/listar');
-     }
+    }
 }
