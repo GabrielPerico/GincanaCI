@@ -22,8 +22,8 @@
                         <?php
                         foreach ($integrantes as $i) {
                             echo '<tr>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $i->nome_i . '</td>';
                             echo '<td class="align-middle table-cells" width="20%">' . $i->nome . '</td>';
+                            echo '<td class="align-middle table-cells" width="20%">' . $i->nomeE . '</td>';
                             echo '<td class="align-middle table-cells" width="20%">' . $i->data_nasc . '</td>';
                             echo '<td class="align-middle table-cells" width="10%">' . $i->cpf . '</td>';
                             echo '<td class="align-middle table-cells" width="10%">' . $i->rg . '</td>';

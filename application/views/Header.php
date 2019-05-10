@@ -39,6 +39,13 @@
                         <a class="dropdown-item" href="<?= $this->config->base_url() . 'Integrantes/Listar' ?>">Listar</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="#" id="menu" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Pontuação</a>
+                    <div class="dropdown-menu" aria-labelledby="menu">
+                        <a class="dropdown-item" href="<?= $this->config->base_url() . 'Pontuacao/Cadastrar' ?>">Adicionar Pontuação</a>
+                        <a class="dropdown-item" href="<?= $this->config->base_url() . 'Pontuacao/Listar' ?>">Pontuação Geral</a>
+                    </div>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto text-white">
                 <li class="nav-item">
