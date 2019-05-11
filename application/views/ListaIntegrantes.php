@@ -1,3 +1,7 @@
+<?php
+$mensagem = $this->session->flashdata('mensagem');
+echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $mensagem . '</div>' : '');
+?>
 <div class="container pt-5">
     <div class="row ">
         <div class="col-12 text-center mb-3">
@@ -20,18 +24,22 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($integrantes as $i) {
-                            echo '<tr>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $i->nome . '</td>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $i->nomeE . '</td>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $i->data_nasc . '</td>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $i->cpf . '</td>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $i->rg . '</td>';
-                            echo '<td class="align-middle table-cells" width="20%">'
-                                . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Integrantes/Alterar/' . $i->id . '">Alterar</a>'
-                                . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Integrantes/Deletar/' . $i->id . '">Deletar</a>';
-                            echo '</td>';
-                            echo '</tr>';
+                        if (count($integrantes) > 0) {
+                            foreach ($integrantes as $i) {
+                                echo '<tr>';
+                                echo '<td class="align-middle table-cells" width="20%">' . $i->nome . '</td>';
+                                echo '<td class="align-middle table-cells" width="20%">' . $i->nomeE . '</td>';
+                                echo '<td class="align-middle table-cells" width="20%">' . $i->data_nasc . '</td>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $i->cpf . '</td>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $i->rg . '</td>';
+                                echo '<td class="align-middle table-cells" width="20%">'
+                                    . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Integrantes/Alterar/' . $i->id . '">Alterar</a>'
+                                    . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Integrantes/Deletar/' . $i->id . '">Deletar</a>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<tr><td class="align-middle table-cells" colspan="6" width="100%">Não há integrantes cadastrados</td></tr>';
                         }
                         ?>
                     </tbody>

@@ -40,8 +40,10 @@ class Equipes extends CI_Controller{
             );
 
             if ($this->Equipes_model->insert($data)) {
+                $this->session->set_flashdata('mensagem', 'Equipe cadastrada com sucesso!!!');
                 redirect('Equipes/Listar');
             } else {
+                $this->session->set_flashdata('mensagem', 'Erro ao cadastrar equipe!!!');
                 redirect('Equipes/Cadastrar');
             }
         }
@@ -64,8 +66,10 @@ class Equipes extends CI_Controller{
                     'nome' => $this->input->post('nome')
                 );
                 if ($this->Equipes_model->update($id, $data)) {
+                    $this->session->set_flashdata('mensagem', 'Equipe alterada com sucesso!!!');
                     redirect('Equipes/Listar');
                 } else {
+                    $this->session->set_flashdata('mensagem', 'Erro ao alterar equipe...');
                     redirect('Equipes/Alterar/' . $id);
                 }
             }
@@ -78,7 +82,11 @@ class Equipes extends CI_Controller{
     {
         if ($id > 0) {
             $this->load->model('Equipes_model');
-            $this->Equipes_model->delete($id);
+            if($this->Equipes_model->delete($id)){
+                $this->session->set_flashdata('mensagem', 'Equipe deletada com sucesso!!!');
+            }else{
+                $this->session->set_flashdata('mensagem', 'Erro ao deletar equipe...');
+            }
         }
         redirect('Equipes/listar');
     }

@@ -44,6 +44,7 @@
                     <div class="dropdown-menu" aria-labelledby="menu">
                         <a class="dropdown-item" href="<?= $this->config->base_url() . 'Pontuacao/Cadastrar' ?>">Adicionar Pontuação</a>
                         <a class="dropdown-item" href="<?= $this->config->base_url() . 'Pontuacao/Listar' ?>">Pontuação Geral</a>
+                        <a class="dropdown-item" href="<?= $this->config->base_url() . 'Pontuacao/listarPorProva' ?>">Pontuação Por Provas</a>
                     </div>
                 </li>
             </ul>

@@ -1,3 +1,7 @@
+<?php
+$mensagem = $this->session->flashdata('mensagem');
+echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $mensagem . '</div>' : '');
+?>
 <div class="container mt-5 pt-4">
     <div class="row">
         <div class="col-12 text-center">
@@ -18,18 +22,14 @@
                             <select class="form-control" name="id_equipe" id="id_equipe">
                                 <option <?= (isset($integrante)) ? 'hidden' : 'selected' ?> disabled>Selecione uma equipe</option>
                                 <?php
-                                if ($equipes != null) {
+                                if (count($equipes) > 0) {
                                     foreach ($equipes as $e) {
                                         echo '<option ';
-                                        if(isset($integrante) && $e->id == $integrante->id_equipe){
-                                            echo 'selected';
-                                        }else{
-                                            echo '';
-                                        }
+                                        (isset($integrante) && $e->id == $integrante->id_equipe) ? 'selected' : '';
                                         echo ' value="' . $e->id . '">' . $e->nome . '</option>';
                                     }
                                 } else {
-                                    echo '<option value="" disabled>Não há times cadastrados</option>';
+                                    echo '<option value="" disabled>Não há equipes cadastradas</option>';
                                 }
                                 ?>
                             </select>

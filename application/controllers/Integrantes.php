@@ -51,8 +51,10 @@ class Integrantes extends CI_Controller
             );
 
             if ($this->Integrantes_model->insert($data)) {
+                $this->session->set_flashdata('mensagem', 'Integrante cadastrado com sucesso!!!');
                 redirect('Integrantes/listar');
             } else {
+                $this->session->set_flashdata('mensagem', 'Erro ao cadastrar integrante!!!');
                 redirect('Integrantes/cadastrar');
             }
         }
@@ -84,8 +86,10 @@ class Integrantes extends CI_Controller
                     'cpf' => $this->input->post('cpf')
                 );
                 if ($this->Integrantes_model->update($id, $data)) {
+                    $this->session->set_flashdata('mensagem', 'Integrante alterado com sucesso!!!');
                     redirect('Integrantes/Listar');
                 } else {
+                    $this->session->set_flashdata('mensagem', 'Erro ao alterar integrante...');
                     redirect('Integrantes/Alterar/' . $id);
                 }
             }
@@ -98,8 +102,12 @@ class Integrantes extends CI_Controller
     {
         if ($id > 0) {
             $this->load->model('Integrantes_model');
-            $this->Integrantes_model->delete($id);
+            if($this->Integrantes_model->delete($id)){
+                $this->session->set_flashdata('mensagem', 'Integrante deletado com sucesso!!!');
+            }else{
+                $this->session->set_flashdata('mensagem', 'Erro ao deletar integrante...');
+            }
         }
-        redirect('Integrantess/listar');
+        redirect('Integrantes/listar');
     }
 }

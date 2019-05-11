@@ -1,3 +1,7 @@
+<?php
+$mensagem = $this->session->flashdata('mensagem');
+echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $mensagem . '</div>' : '');
+?>
 <div class="container mt-5 pt-4">
     <div class="row">
         <div class="col-12 text-center">

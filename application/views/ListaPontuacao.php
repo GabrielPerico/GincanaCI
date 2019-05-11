@@ -1,3 +1,7 @@
+<?php
+$mensagem = $this->session->flashdata('mensagem');
+echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $mensagem . '</div>' : '');
+?>
 <div class="container pt-5">
     <div class="row ">
         <div class="col-12 text-center mb-3">
@@ -17,28 +21,36 @@
                     </thead>
                     <tbody>
                         <?php
-                        $count = 1;
-                        foreach ($pontuacao as $p) {
-                            echo '<tr>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $count . '</td>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
-                            echo '<td class="align-middle table-cells" width="70%"><div class="w-auto p-3" style="background-color:';
-                            if ($count == 3) {
-                                echo '#cd7f32"';
-                            } else if ($count == 2) {
-                                echo '#C0C0C0"';
-                            } else if ($count == 1) {
-                                echo '#FFD700"';
-                            } else {
-                                echo '#eee"';
+                        if (count($pontuacao) > 0) {
+                            $count = 1;
+                            $lastPnt = 0;
+                            foreach ($pontuacao as $p) {
+                                if ($lastPnt == $p->pontosT) {
+                                    $count--;
+                                };
+                                echo '<tr>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $count . '</td>';
+                                echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
+                                echo '<td class="align-middle table-cells" width="70%"><div class="w-auto p-3" style="background-color:';
+                                if ($count == 3) {
+                                    echo '#cd7f32"';
+                                } else if ($count == 2) {
+                                    echo '#C0C0C0"';
+                                } else if ($count == 1) {
+                                    echo '#FFD700"';
+                                } else {
+                                    echo '#eee"';
+                                }
+                                echo ">";
+
+                                echo $p->pontosT;
+
+                                echo '</div></td></tr>';
+                                $lastPnt = $p->pontosT;
+                                $count++;
                             }
-                            echo ">";
-
-                            echo $p->pontosT;
-
-                            echo '</div></td></tr>';
-
-                            $count++;
+                        } else {
+                            echo '<tr><td class"align-middle" width="100%" colspan="3">Não há pontuação registrada</td></tr>';
                         }
                         ?>
                     </tbody>

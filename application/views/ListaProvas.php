@@ -1,3 +1,7 @@
+<?php
+$mensagem = $this->session->flashdata('mensagem');
+echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $mensagem . '</div>' : '');
+?>
 <div class="container pt-5">
     <div class="row ">
         <div class="col-12 text-center mb-3">
@@ -19,17 +23,21 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($provas as $p) {
-                            echo '<tr>';
-                            echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
-                            echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
-                            echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
-                            echo '<td class="align-middle table-cells" width="20%">'
-                                . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Provas/alterar/' . $p->id . '">Alterar</a>'
-                                . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Provas/deletar/' . $p->id . '">Deletar</a>';
-                            echo '</td>';
-                            echo '</tr>';
+                        if (count($provas) > 0) {
+                            foreach ($provas as $p) {
+                                echo '<tr>';
+                                echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $p->tempo . '</td>';
+                                echo '<td class="align-middle table-cells" width="40%">' . $p->descricao . '</td>';
+                                echo '<td class="align-middle table-cells" width="10%">' . $p->NIntegrantes . '</td>';
+                                echo '<td class="align-middle table-cells" width="20%">'
+                                    . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Provas/alterar/' . $p->id . '">Alterar</a>'
+                                    . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Provas/deletar/' . $p->id . '">Deletar</a>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<tr><td class"align-middle" width="100%" colspan="5">Não há provas registrada</td></tr>';
                         }
                         ?>
                     </tbody>

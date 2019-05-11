@@ -1,3 +1,7 @@
+<?php
+$mensagem = $this->session->flashdata('mensagem');
+echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $mensagem . '</div>' : '');
+?>
 <div class="container pt-5">
     <div class="row ">
         <div class="col-12 text-center mb-3">
@@ -16,14 +20,19 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($equipes as $e) {
-                            echo '<tr>';
-                            echo '<td class="align-middle table-cells" width="50%">' . $e->nome . '</td>';
-                            echo '<td class="align-middle table-cells" width="50%">'
-                                . '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Equipes/Alterar/' . $e->id . '">Alterar</a>'
-                                . '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Equipes/Deletar/' . $e->id . '">Deletar</a>';
-                            echo '</td>';
-                            echo '</tr>';
+                        if (count($equipes) > 0) {
+
+                            foreach ($equipes as $e) {
+                                echo '<tr>';
+                                echo '<td class="align-middle table-cells" width="50%">' . $e->nome . '</td>';
+                                echo '<td class="align-middle table-cells" width="50%">';
+                                echo '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Equipes/Alterar/' . $e->id . '">Alterar</a>';
+                                ($e->countIntegrantes > 0) ? '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Equipes/Deletar/' . $e->id . '">Deletar</a>' : '';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<tr><td class"align-middle" width="100%" colspan="2">Não há equipes registradas</td></tr>';
                         }
                         ?>
                     </tbody>

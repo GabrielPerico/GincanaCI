@@ -2,7 +2,6 @@
 
 class Equipes_model extends CI_Model
 {
-
     public function getOne($id)
     {
         $this->db->where('id', $id);
@@ -12,6 +11,8 @@ class Equipes_model extends CI_Model
 
     public function getAll()
     {
+        $this->db->select("equipes.*,(SELECT count(integrantes.id) FROM integrantes WHERE id_equipe = equipes.id) as countIntegrantes");
+        $this->db->join('integrantes', 'integrantes.id_equipe = equipes.id', 'inner');
         $query = $this->db->get('equipes');
         return $query->result();
     }
