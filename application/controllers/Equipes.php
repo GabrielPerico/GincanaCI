@@ -11,13 +11,13 @@ class Equipes extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Equipes_model');
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
     }
 
     public function listar()
     {
-        $this->load->model('Equipes_model');
         $data['equipes'] = $this->Equipes_model->getAll();
         $this->load->view('Header');
         $this->load->view('ListaEquipes', $data);
@@ -27,13 +27,12 @@ class Equipes extends CI_Controller{
     public function cadastrar()
     {
         $this->form_validation->set_rules('nome', 'nome', 'required');
-
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('Header');
             $this->load->view('FormEquipes');
             $this->load->view('Footer');
         } else {
-            $this->load->model('Equipes_model');
+            
 
             $data = array(
                 'nome' => $this->input->post('nome')
@@ -52,8 +51,7 @@ class Equipes extends CI_Controller{
     public function alterar($id)
     {
         if ($id > 0) {
-            $this->load->model('Equipes_model');
-
+        
             $this->form_validation->set_rules('nome', 'nome', 'required');
 
             if ($this->form_validation->run() == FALSE) {
@@ -81,7 +79,7 @@ class Equipes extends CI_Controller{
     public function deletar($id)
     {
         if ($id > 0) {
-            $this->load->model('Equipes_model');
+            
             if($this->Equipes_model->delete($id)){
                 $this->session->set_flashdata('mensagem', 'Equipe deletada com sucesso!!!');
             }else{

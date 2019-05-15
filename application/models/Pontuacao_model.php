@@ -33,7 +33,7 @@ class Pontuacao_model extends CI_Model
         $this->db->select('pontuacao.*,equipes.nome,sum(pontos) as pontosT');
         $this->db->join('equipes', 'equipes.id = pontuacao.id_equipe', 'inner');
         $this->db->order_by('pontosT', 'desc');
-        $this->db->group_by('nome');
+        $this->db->group_by('equipes.nome');
         $query = $this->db->get('pontuacao');
         return $query->result();
     }

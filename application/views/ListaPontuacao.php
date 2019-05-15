@@ -31,19 +31,33 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
                                 echo '<tr>';
                                 echo '<td class="align-middle table-cells" width="10%">' . $count . '</td>';
                                 echo '<td class="align-middle table-cells" width="20%">' . $p->nome . '</td>';
-                                echo '<td class="align-middle table-cells" width="70%"><div class="w-auto p-3" style="background-color:';
+                                echo '<td class="align-middle table-cells" width="70%">';
+                                echo '<div class="w-auto p-3 text-left align-center" style="background-color:';
                                 if ($count == 3) {
-                                    echo '#cd7f32"';
+                                    echo '#cd7f32">';
                                 } else if ($count == 2) {
-                                    echo '#C0C0C0"';
+                                    echo '#C0C0C0">';
                                 } else if ($count == 1) {
-                                    echo '#FFD700"';
+                                    echo '#FFD700">';
                                 } else {
-                                    echo '#eee"';
+                                    echo '#eee">';
                                 }
-                                echo ">";
-
+                                echo '<div class="row">';
+                                echo '<i class="fas fa-trophy h1 m-auto col-5   " style="color:';
+                                if ($count == 3) {
+                                    echo '#b9722d">';
+                                } else if ($count == 2) {
+                                    echo '#A9A9A9">';
+                                } else if ($count == 1) {
+                                    echo '#DAA520">';
+                                } else {
+                                    echo '">';
+                                }
+                                echo '</i>';
+                                echo '<div class="col-7 pl-5 text-left align-center">';
                                 echo $p->pontosT;
+                                echo '</div>';
+                                echo '</div>';
 
                                 echo '</div></td></tr>';
                                 $lastPnt = $p->pontosT;

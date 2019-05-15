@@ -27,7 +27,7 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
                                 echo '<td class="align-middle table-cells" width="50%">' . $e->nome . '</td>';
                                 echo '<td class="align-middle table-cells" width="50%">';
                                 echo '<a class="btn btn-primary mr-3" href="' . $this->config->base_url() . 'Equipes/Alterar/' . $e->id . '">Alterar</a>';
-                                ($e->countIntegrantes > 0) ? '<a class="btn btn-danger" href="' . $this->config->base_url() . 'Equipes/Deletar/' . $e->id . '">Deletar</a>' : '';
+                                echo ($e->Integrantes < 1) ?  '<a class="btn btn-outline-danger" href="' . $this->config->base_url() . 'Equipes/Deletar/' . $e->id . '">Deletar</a>' : '';
                                 echo '</td>';
                                 echo '</tr>';
                             }

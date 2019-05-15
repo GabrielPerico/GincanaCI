@@ -13,12 +13,13 @@ class Integrantes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Usuario_model');
+        $this->load->model('Integrantes_model');
         $this->Usuario_model->verificaLogin();
     }
 
     public function listar()
     {
-        $this->load->model('Integrantes_model');
+        
         $data['integrantes'] = $this->Integrantes_model->getAll();
         $this->load->view('Header');
         $this->load->view('ListaIntegrantes', $data);
@@ -29,18 +30,15 @@ class Integrantes extends CI_Controller
     {
         $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
         $this->form_validation->set_rules('nome', 'nome', 'required');
-        $this->form_validation->set_rules('data_nasc', 'data_nasc', 'required');
-        $this->form_validation->set_rules('rg', 'rg', 'required');
-        $this->form_validation->set_rules('cpf', 'cpf', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->model('Integrantes_model');
+            
             $data['equipes'] = $this->Integrantes_model->getEquipes();
             $this->load->view('Header');
             $this->load->view('FormIntegrantes', $data);
             $this->load->view('Footer');
         } else {
-            $this->load->model('Integrantes_model');
+            
 
             $data = array(
                 'nome' => $this->input->post('nome'),
@@ -63,7 +61,7 @@ class Integrantes extends CI_Controller
     public function alterar($id)
     {
         if ($id > 0) {
-            $this->load->model('Integrantes_model');
+            
 
             $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
             $this->form_validation->set_rules('nome', 'nome', 'required');
@@ -101,7 +99,7 @@ class Integrantes extends CI_Controller
     public function deletar($id)
     {
         if ($id > 0) {
-            $this->load->model('Integrantes_model');
+            
             if($this->Integrantes_model->delete($id)){
                 $this->session->set_flashdata('mensagem', 'Integrante deletado com sucesso!!!');
             }else{
