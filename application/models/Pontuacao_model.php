@@ -20,11 +20,10 @@ class Pontuacao_model extends CI_Model
     }
     public function getPontuacaoProva()
     {
-        $this->db->select('sum(pontuacao.pontos) as pontos,equipes.nome as nomeE,prova.nome as nomeP,usuario.nome as nomeU');
+        $this->db->select('pontuacao.*,equipes.nome as nomeE,prova.nome as nomeP,usuario.nome as nomeU');
         $this->db->join('equipes', 'equipes.id = pontuacao.id_equipe', 'inner');
         $this->db->join('prova', 'prova.id = pontuacao.id_prova', 'inner');
         $this->db->join('usuario', 'usuario.id = pontuacao.id_usuario', 'inner');
-        $this->db->group_by('nomeP,nomeE,nomeU');
         $this->db->order_by('nomeE', 'asc');
         $this->db->order_by('pontos', 'desc');
 
@@ -45,5 +44,15 @@ class Pontuacao_model extends CI_Model
     {
         $this->db->insert('pontuacao', $data);
         return $this->db->affected_rows();
+    }
+    public function delete($id)
+    {
+        if ($id > 0) {
+            $this->db->where('id', $id);
+            $this->db->delete('pontuacao');
+            return $this->db->affected_rows();
+        } else {
+            return false;
+        }
     }
 }

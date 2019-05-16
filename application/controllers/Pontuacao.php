@@ -20,7 +20,7 @@ class Pontuacao extends CI_Controller
 
     public function listarPorProva()
     {
-        
+
         $data['pontuacao'] = $this->Pontuacao_model->getPontuacaoProva();
 
         $this->load->view('Header');
@@ -30,7 +30,7 @@ class Pontuacao extends CI_Controller
 
     public function listar()
     {
-        
+
         $data['pontuacao'] = $this->Pontuacao_model->getAll();
         $this->load->view('Header');
         $this->load->view('ListaPontuacao', $data);
@@ -39,7 +39,7 @@ class Pontuacao extends CI_Controller
     public function cadastrar()
     {
         $this->form_validation->set_rules('id_prova', 'id_prova', 'required');
-        
+
         if ($this->form_validation->run() == FALSE) {
             $data['equipe'] = $this->Pontuacao_model->getEquipes();
             $data['prova'] = $this->Pontuacao_model->getProva();
@@ -55,7 +55,7 @@ class Pontuacao extends CI_Controller
                         'id_prova' => $this->input->post('id_prova'),
                         'id_usuario' => $this->session->userdata('idUsuario'),
                         'data_hora' => date('Y-m-d H:i:s')
-                        
+
                     );
                     $funciono = $this->Pontuacao_model->insert($data[$k]);
                 }
@@ -68,5 +68,17 @@ class Pontuacao extends CI_Controller
                 }
             }
         }
+    }
+    public function deletar($id)
+    {
+        if ($id > 0) {
+
+            if ($this->Pontuacao_model->delete($id)) {
+                $this->session->set_flashdata('mensagem', 'Pontuação deletada com sucesso!!!');
+            } else {
+                $this->session->set_flashdata('mensagem', 'Erro ao deletar pontuação...');
+            }
+        }
+        redirect('Pontuacao/ListarPorProva');
     }
 }

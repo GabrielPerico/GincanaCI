@@ -15,10 +15,12 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
                         <table class="table table-hover text-center mb-0">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col" width="30%">Prova</th>
-                                    <th scope="col" width="40%">Equipe</th>
+                                    <th scope="col" width="20%">Prova</th>
+                                    <th scope="col" width="20%">Equipe</th>
+                                    <th scope="col" width="20%">Data Do Cadastro</th>
                                     <th scope="col" width="20%">Usuario</th>
                                     <th scope="col" width="10%">Pontos</th>
+                                    <th scope="col" width="10%">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,8 +31,10 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
                                         echo '<tr>';
                                         echo '<td shape="col" widht="30%">' . $p->nomeP . '</td>';
                                         echo '<td shape="col" widht="40%">' . $p->nomeE . '</td>';
+                                        echo '<td shape="col" widht="40%">' . $p->data_hora . '</td>';
                                         echo '<td shape="col" widht="10%">' . $p->nomeU . '</td>';
                                         echo '<td shape="col" widht="10%">' . $p->pontos . '</td>';
+                                        echo '<td shape="col" widht="10%"><a data-toggle="tooltip" title="Deletar" class="btn btn-outline-danger" href="' . $this->config->base_url() . 'Pontuacao/Deletar/' . $p->id . '"><i class="fas fa-trash-alt"></i></a>';
                                         echo '</tr>';
                                     }
                                 } else {
