@@ -12,6 +12,7 @@ class Pontuacao extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        date_default_timezone_set('America/Sao_Paulo');
         $this->load->model('Usuario_model');
         $this->load->model('Pontuacao_model');
         $this->Usuario_model->verificaLogin();

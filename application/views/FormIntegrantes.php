@@ -5,7 +5,7 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
 <div class="container my-5 pt-4">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card rounded-0">
+            <div class="card rounded-0 shadow-lg">
                 <div class="card-header bg-dark text-center text-white">
                     <h3 class="mb-0">Cadastro de Integrantes</h3>
                 </div>
@@ -22,7 +22,7 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
                                 if (count($equipes) > 0) {
                                     foreach ($equipes as $e) {
                                         echo '<option ';
-                                        (isset($integrante) && $e->id == $integrante->id_equipe) ? 'selected' : '';
+                                        echo (isset($integrante) && $e->id == $integrante->id_equipe) ? 'selected' : '';
                                         echo ' value="' . $e->id . '">' . $e->nome . '</option>';
                                     }
                                 } else {
@@ -43,7 +43,7 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
                         <hr>
                         <div class="form-group py-2 text-center">
                             <button class="btn btn-outline-success px-3 mr-3" type="submit">Enviar</button>
-                            <?= (isset($integrante)) ? '<a class="btn btn-outline-danger" href="' . $this->config->base_url() . 'Integrante/Listar">Cancelar</a>' : '<button class="btn btn-outline-danger" type="reset">Limpar</button>' ?>
+                            <?= (isset($integrante)) ? '<a class="btn btn-outline-danger" href="' . $this->config->base_url() . 'Integrantes/Listar">Cancelar</a>' : '<button class="btn btn-outline-danger" type="reset">Limpar</button>' ?>
                         </div>
                         <h6 class="card-subtitle mb-2 font-italic font-weight-lighter text-left py-3">* Campo obrigatório</h6>
                     </form>

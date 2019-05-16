@@ -3,6 +3,8 @@
 class Integrantes_model extends CI_Model
 {
     public function getEquipes(){
+        $this->db->order_by('nome', 'asc');
+        
         $query = $this->db->get('equipes');
         return $query->result();
     }
@@ -17,7 +19,7 @@ class Integrantes_model extends CI_Model
     {
         $this->db->select('integrantes.*,equipes.nome as nomeE');
         $this->db->join('equipes', 'equipes.id = integrantes.id_equipe', 'inner');
-        
+        $this->db->order_by('nomeE,nome', 'asc');
         $query = $this->db->get('integrantes');
         return $query->result();
     }

@@ -27,6 +27,7 @@ class Usuario extends CI_Controller
                 $data = array(
                     'idUsuario' => $usuario->id,
                     'email' => $usuario->email,
+                    'nome' => $usuario->nome,
                     'logado' => true
                 );
                 $this->session->set_userdata($data);

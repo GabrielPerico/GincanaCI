@@ -5,7 +5,7 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
 <div class="container my-5 pt-4">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card rounded-0">
+            <div class="card rounded-0 shadow-lg">
                 <div class="card-header bg-dark text-center text-white">
                     <h3 class="mb-0">Cadastro de Provas</h3>
                 </div>

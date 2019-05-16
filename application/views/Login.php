@@ -9,28 +9,35 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-3">Login de Usuario</h1>
-        <div class="card mx-auto" style="max-width: 300px;">
-                <div class="card-body">
+<div class="container my-5 pt-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card rounded-0 shadow-lg">
+                <div class="card-header bg-dark text-center text-white">
+                    <h3 class="mb-0">Login de Usuário</h3>
+                </div>
+                <div class="card-body col-8 mx-auto">
+
                 <?php
                 $mensagem = $this->session->flashdata('mensagem');
                 echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $mensagem . '</div>' : '');
                 ?>
                 <form action="" method="POST" name="login">
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="text" class="form-control" name="email" id="email">
+                    <div class="form-group py-2">
+                        <input placeholder="example@email.com" type="text" class="form-control" name="email" id="email">
                     </div>
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input type="password" class="form-control" name="senha" id="senha">
+                    <div class="form-group py-2">
+                        <input placeholder="senha" type="password" class="form-control" name="senha" id="senha">
                     </div>
-                    <button type="submit" class="btn btn-success">
-                        <i class="fas fa-check"></i> Acessar
-                    </button>
+                    <hr>
+                    <div class="form-group py-2 text-center">
+                        <button type="submit" class="btn btn-success ">
+                            <i class="fas fa-check"></i> Acessar
+                        </button>
+                    </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

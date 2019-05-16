@@ -36,6 +36,8 @@ class Provas_model extends CI_Model
     public function delete($id)
     {
         if ($id > 0) {
+            $this->db->where('id_prova', $id);
+            $this->db->delete('pontuacao');
             $this->db->where('id', $id);
             $this->db->delete('prova');
             return $this->db->affected_rows();

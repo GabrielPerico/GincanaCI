@@ -29,9 +29,7 @@ class Provas extends CI_Controller
     public function cadastrar()
     {
         $this->form_validation->set_rules('nome', 'nome', 'required');
-        $this->form_validation->set_rules('tempo', 'tempo', 'required');
         $this->form_validation->set_rules('descricao', 'descricao', 'required');
-        $this->form_validation->set_rules('NIntegrantes', 'NIntegrantes', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('Header');
