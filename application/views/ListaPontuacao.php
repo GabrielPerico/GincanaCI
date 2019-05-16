@@ -23,7 +23,7 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
                                 <?php
                                 if (count($pontuacao) > 0) {
                                     $count = 1;
-                                    $lastPnt = 0;
+                                    $lastPnt = -1;
                                     foreach ($pontuacao as $p) {
                                         if ($lastPnt == $p->pontosT) {
                                             $count--;
