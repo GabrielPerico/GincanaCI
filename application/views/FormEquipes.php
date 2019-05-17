@@ -21,7 +21,7 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
                                     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="userfile" class="custom-file-input" id="logo" aria-describedby="inputGroupFileAddon01">
+                                    <input type="file" name="userfile" class="custom-file-input" id="logo" aria-describedby="inputGroupFileAddon01" value="<?= (isset($equipe)) ? $this->config->base_url() . 'uploads/' . $equipe->imagem : '' ?>">
                                     <label class="custom-file-label" for="logo">Selecione um Arquivo</label>
                                 </div>
                             </div>
