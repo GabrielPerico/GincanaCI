@@ -2,12 +2,15 @@
 
 class Equipes_model extends CI_Model
 {
+
+
     public function getOne($id)
     {
         $this->db->where('id', $id);
         $query = $this->db->get('equipes');
         return $query->row();
     }
+
 
     public function getAll()
     {

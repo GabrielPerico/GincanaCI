@@ -14,8 +14,9 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
                         <table class="table table-hover text-center mb-0">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col" width="50%">Nome da Equipe</th>
-                                    <th scope="col" width="50%">Ações</th>
+                                    <th scope="col" width="30%">Logo</th>
+                                    <th scope="col" width="40%">Nome da Equipe</th>
+                                    <th scope="col" width="30%">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -24,8 +25,9 @@ echo (isset($mensagem) ? '<div class="alert alert-success" role="alert">' . $men
 
                                     foreach ($equipes as $e) {
                                         echo '<tr>';
-                                        echo '<td class="align-middle table-cells" width="50%">' . $e->nome . '</td>';
-                                        echo '<td class="align-middle table-cells" width="50%">';
+                                        echo '<td class="align-middle table-cells" width="30%"><img class="img-fluid border border-dark rounded-circle" style="max-height:60px;" src="' . $this->config->base_url() . 'uploads/' . $e->imagem . '"></td>';
+                                        echo '<td class="align-middle table-cells" width="40%">' . $e->nome . '</td>';
+                                        echo '<td class="align-middle table-cells" width="30%">';
                                         echo '<a data-toggle="tooltip" title="Alterar" class="btn btn-outline-primary mr-3" href="' . $this->config->base_url() . 'Equipes/Alterar/' . $e->id . '"><i class="fas fa-pencil-alt"></i></a>';
                                         echo ($e->Integrantes < 1) ?  '<a data-toggle="tooltip" title="Deletar" class="btn btn-outline-danger" href="' . $this->config->base_url() . 'Equipes/Deletar/' . $e->id . '"><i class="fas fa-trash-alt"></i></a>' : '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Há integrantes cadastrados nessa equipe!"><a class="disabled btn btn-outline-danger" href=""><i class="fas fa-trash-alt"></i></a></span>';
                                         echo '</td>';

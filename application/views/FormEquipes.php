@@ -11,9 +11,20 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted text-center py-3">Informe o nome da equipe para o registro no sistema</h6>
-                    <form action="" method="post" class="form">
+                    <form action="" method="post" class="form" enctype="multipart/form-data">
                         <div class="form-group py-2">
                             <input placeholder="* Nome" class="form-control form-control-lg rounded-0" type="text" name="nome" id="nome" value="<?= (isset($equipe)) ? $equipe->nome : '' ?>">
+                        </div>
+                        <div class="form-group py-2">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="userfile" class="custom-file-input" id="logo">
+                                    <label class="custom-file-label" for="logo">Choose file</label>
+                                </div>
+                            </div>
                         </div>
                         <hr>
                         <div class="form-group py-2 text-center">
