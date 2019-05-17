@@ -18,11 +18,11 @@ echo (isset($mensagem) ? ' <div class="alert alert-danger" role="alert">' . $men
                         <div class="form-group py-2">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Upload</span>
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="userfile" class="custom-file-input" id="logo">
-                                    <label class="custom-file-label" for="logo">Choose file</label>
+                                    <input type="file" name="userfile" class="custom-file-input" id="logo" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="logo">Selecione um Arquivo</label>
                                 </div>
                             </div>
                         </div>

@@ -58,6 +58,7 @@ class Equipes extends CI_Controller
                 $this->session->set_flashdata('mensagem', 'Equipe cadastrada com sucesso!!!');
                 redirect('Equipes/Listar');
             } else {
+                unlink($data['imagem']);
                 $this->session->set_flashdata('mensagem', 'Erro ao cadastrar equipe!!!');
                 redirect('Equipes/Cadastrar');
             }
@@ -97,6 +98,7 @@ class Equipes extends CI_Controller
                     $this->session->set_flashdata('mensagem', 'Equipe alterada com sucesso!!!');
                     redirect('Equipes/Listar');
                 } else {
+                    unlink($data['imagem']);
                     $this->session->set_flashdata('mensagem', 'Erro ao alterar equipe...');
                     redirect('Equipes/Alterar/' . $id);
                 }
